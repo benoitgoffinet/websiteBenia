@@ -98,19 +98,31 @@ st.markdown("""
     
     /* Supprime les marges automatiques autour de la barre d'onglets */
     div[data-baseweb="tab-list"] {
-        height: 5vh;                  
+        min-height: clamp(52px, 7vh, 96px);           
         display: flex;
         align-items: center;
         justify-content: space-around;
         margin-bottom: 0;               /* ❌ aucune marge en dessous */
         padding-bottom: 0;              /* ❌ aucune marge interne */
+        gap: clamp(0.2rem, 1vw, 1rem);
     }
 
     /* Style optionnel des onglets */
     div[data-baseweb="tab"] {
-        font-size: clamp(12px, 1.6vw, 26px) !important;
+        font-size: clamp(16px, 2.2vw, 34px) !important;
         font-weight: 600 !important;
-        padding: clamp(6px,1vw,16px) clamp(10px,2vw,30px) !important;
+        line-height: 1.2 !important;
+        padding: clamp(8px,1.2vw,20px) clamp(12px,2.5vw,36px) !important;
+        min-height: clamp(44px, 6vh, 72px) !important;
+        white-space: normal !important;
+        text-align: center !important;
+    }
+
+    @media (max-width: 900px) {
+        div[data-baseweb="tab"] {
+            font-size: clamp(14px, 4vw, 22px) !important;
+            padding: clamp(8px, 2vw, 14px) clamp(8px, 2vw, 16px) !important;
+        }
     }
 
     /* Supprime les espaces résiduels éventuels */
