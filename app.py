@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 import base64
+from pathlib import Path
 
 #fonction
 def display_image(image_path, height=300, caption=None):
@@ -15,19 +16,25 @@ def display_image(image_path, height=300, caption=None):
     
     st.image(img_resized, caption=caption)
     
-
+@st.cache_data(show_spinner=False)
 def get_base64(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
     return base64.b64encode(data).decode()
 
-# Encoder l'image de fond
-presentation = get_base64("images/presentation.jpg")
-solution = get_base64("images/solution.jpg")
-dashboard = get_base64("images/dashboardanalysegenerale.png")
-apropos = get_base64("images/apropos.jpg")
-contact = get_base64("images/contact.jpg") 
-benoit = get_base64("images/benoit.png")
+@st.cache_data(show_spinner=False)
+def load_assets():
+    image_dir = Path(__file__).parent / "images"
+    return {
+        "presentation": get_base64(image_dir / "presentation.jpg"),
+        "solution": get_base64(image_dir / "solution.jpg"),
+        "dashboard": get_base64(image_dir / "dashboardanalysegenerale.png"),
+        "apropos": get_base64(image_dir / "apropos.jpg"),
+        "contact": get_base64(image_dir / "contact.jpg"),
+    }
+
+# Encoder les images de fond
+assets = load_assets()
 
 
 
@@ -67,6 +74,26 @@ header {
             padding-right: 0.1rem;
             background-color: #B8C1CC;
 
+        }
+
+        .content-panel {
+            width: min(1200px, 100%);
+            margin-inline: auto;
+            background-color: rgba(0,0,0,0.78);
+            border-radius: 1.25rem;
+            padding: clamp(1rem, 3vw, 2.5rem);
+        }
+
+        .cta-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.9rem 1.4rem;
+            border-radius: 0.75rem;
+            background-color: #FACC15;
+            color: #111827 !important;
+            text-decoration: none;
+            font-size: clamp(1rem, 1.2vw, 1.15rem);
+            font-weight: 700;
         }
     </style>
     """,
@@ -109,19 +136,19 @@ st.markdown("""
 
     /* Style optionnel des onglets */
     div[data-baseweb="tab"] {
-        font-size: clamp(16px, 2.2vw, 34px) !important;
-        font-weight: 600 !important;
-        line-height: 1.2 !important;
-        padding: clamp(8px,1.2vw,20px) clamp(12px,2.5vw,36px) !important;
-        min-height: clamp(44px, 6vh, 72px) !important;
+        font-size: clamp(13px, 1.25vw, 20px) !important;
+        font-weight: 500 !important;
+        line-height: 1.15 !important;
+        padding: clamp(6px,0.8vw,12px) clamp(10px,1.3vw,18px) !important;
+        min-height: clamp(38px, 4.5vh, 52px) !important;
         white-space: normal !important;
         text-align: center !important;
     }
 
     @media (max-width: 900px) {
         div[data-baseweb="tab"] {
-            font-size: clamp(14px, 4vw, 22px) !important;
-            padding: clamp(8px, 2vw, 14px) clamp(8px, 2vw, 16px) !important;
+            font-size: clamp(12px, 3.2vw, 15px) !important;
+            padding: clamp(6px, 1.8vw, 10px) clamp(8px, 2vw, 12px) !important;
         }
     }
 
@@ -146,10 +173,10 @@ with tabs[0]:
     f"""
     <div style="
         width: 100%;
-        fontsize: 14px;
+        font-size: 14px;
         min-height: 92vh;
         font-family: 'Roboto', sans-serif;
-        background-image: url('data:image/png;base64,{presentation}');
+        background-image: url('data:image/png;base64,{assets['presentation']}');
         background-size: cover;
         background-position: 50% 20%;
         position: relative;
@@ -157,10 +184,7 @@ with tabs[0]:
         justify-content: center;
         align-items: center;
     ">
-        <div style="
-            background-color: rgba(0,0,0,0.8);
-            border-radius: 2rem;
-        ">
+        <div class="content-panel">
             <h1 style="color:#B8C1CC; text-align:center; font-family: 'Times New Roman', Times, serif; font-size: clamp(0.5rem, 7vw + 1rem, 5rem);">{'BenIA.solutions<br> Data Consultant spécialisé dans les structures culturelles'}</h1>
          <p style="color:#B8C1CC; text-align:center; font-family: 'Times New Roman', Times, serif; font-size: clamp(0.3rem, 4vw + 1rem, 3rem);">Anticipez le remplissage de vos spectacles et pilotez votre programmation grâce à l’analyse de vos propres données.</p>
         </div>
@@ -176,10 +200,10 @@ with tabs[1]:
     st.markdown(
     f"""
     <div style="
-        width: 100%;eight: 100%;
-        fontsize: 16px;
+        width: 100%;
+        font-size: 16px;
         font-family: 'Roboto', sans-serif;
-        background-image: url('data:image/png;base64,{solution}');
+        background-image: url('data:image/png;base64,{assets['solution']}');
         background-size: cover;
         background-position: center;
         position: relative;
@@ -239,9 +263,9 @@ with tabs[2]:
     <div style="
         width: 100%;
         min-height: 92vh;
-        fontsize: 16px;
+        font-size: 16px;
         font-family: 'Roboto', sans-serif;
-        background-image: url('data:image/png;base64,{dashboard}');
+        background-image: url('data:image/png;base64,{assets['dashboard']}');
         background-size: cover;
         background-position: center;
         position: relative;
@@ -270,33 +294,13 @@ Le dashboard permet notamment de :
             <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Accéder à la démonstration interactive</h2>
             <p>Les données utilisées dans cette démonstration sont fictives et présentées uniquement à des fins d’illustration.<br>
             Le dashboard peut être adapté aux données propres à chaque structure culturelle et enrichi avec différentes variables selon les besoins d’analyse.</p>
+            <a class="cta-link" href="https://web-production-269e5.up.railway.app/" target="_blank" rel="noopener noreferrer">🚀 Tester la démo interactive</a>
             </div>
     </div>
     """,
     unsafe_allow_html=True
 )
-    st.markdown(
-    """
-    <a href="https://web-production-269e5.up.railway.app/" target="_blank"
-style="
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-padding:24px;
-background-color:#FACC15;
-color:black;
-text-decoration:none;
-font-size:24px;
-font-weight:700;
-text-align:center;
-z-index:999;
-">
-🚀 Tester la démo interactive
-</a>
-    """,
-    unsafe_allow_html=True
-)
+    
 
 # --- Onglet 3 : A propos
 with tabs[3]: 
@@ -306,7 +310,7 @@ with tabs[3]:
         width: 100%;
         font-size: 16px;
         font-family: 'Roboto', sans-serif;
-        background-image: url('data:image/png;base64,{apropos}');
+        background-image: url('data:image/png;base64,{assets['apropos']}');
         background-size: cover;
         background-position: center;
         position: relative;
@@ -393,9 +397,9 @@ with tabs[4]:
     <div style="
         width: 100%;
         min-height: 92vh;
-        fontsize: 16px;
+        font-size: 16px;
         font-family: 'Roboto', sans-serif;
-        background-image: url('data:image/png;base64,{contact}');
+        background-image: url('data:image/png;base64,{assets['contact']}');
         background-size: cover;
         background-position: center;
         position: relative;
