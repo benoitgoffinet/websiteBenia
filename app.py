@@ -4,17 +4,6 @@ import base64
 from pathlib import Path
 
 #fonction
-def display_image(image_path, height=300, caption=None):
-    """
-    Affiche une image dans Streamlit avec une hauteur fixe.
-    La largeur est ajustée automatiquement pour garder le ratio.
-    """
-    img = Image.open(image_path)
-    hpercent = height / float(img.size[1])
-    wsize = int(float(img.size[0]) * hpercent)
-    img_resized = img.resize((wsize, height))
-    
-    st.image(img_resized, caption=caption)
     
 @st.cache_data(show_spinner=False)
 def get_base64(bin_file):
@@ -228,7 +217,7 @@ Il devient alors difficile d’<strong>anticiper l’affluence</strong> des spec
             <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Solution</h2>
             <p style="font-size:18px; line-height:1.6;">Pour répondre à cette problématique, BenIA.solutions propose d’exploiter et d’analyser vos données historiques de fréquentation afin d’identifier les tendances observées au fil du temps.<br>
 BenIA.solutions développe ensuite un dashboard interactif permettant d’analyser les données de fréquentation, d’anticiper l’affluence des spectacles et d’accompagner l’organisation des représentations.
-<p/>
+</p>
             <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Bénéfices</h2>
             <ul style="font-size:18px; line-height:1.6;">
             <li><strong>✔ Anticipation de la fréquentation</strong> <br>
@@ -250,18 +239,18 @@ Sur plusieurs représentations, cela peut représenter un gain significatif sur 
             <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Avant l’analyse des données</h2>
             <p style="font-size:18px; line-height:1.6;">Les informations utiles à la prise de décision sont souvent <strong>dispersées, peu accessibles ou difficiles à exploiter.</strong><br>
             Les décisions d’organisation et de programmation reposent alors principalement <strong>sur l’expérience ou l’intuition.</strong>
-            <p/>
+            </p>
              <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Après l’analyse des données</h2>
              <p style="font-size:18px; line-height:1.6;">BenIA.solutions met à disposition un <strong>dashboard interactif</strong> permettant de centraliser et d’exploiter les données de fréquentation.<br>
             Les équipes disposent alors d’indicateurs clairs pour <strong>anticiper la fréquentation, identifier les tendances et orienter plus facilement les décisions d’organisation et de programmation.</strong>
-            <p/>
+            </p>
             </div>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-# --- Onglet 2 : dash
+# --- Onglet 3 : dashboard
 with tabs[2]: 
     st.markdown(
     f"""
