@@ -64,8 +64,17 @@ header {
 
         }
 
+        html {
+            font-size: 18px;
+        }
+
+        @media (min-width: 1600px) {
+            html {
+                font-size: 20px;
+            }
+        }
         .content-panel {
-            width: min(1200px, 100%);
+            width: min(1500px, 96vw);
             margin-inline: auto;
             background-color: rgba(0,0,0,0.78);
             border-radius: 1.25rem;
@@ -124,7 +133,7 @@ st.markdown("""
 
     /* Style optionnel des onglets */
     div[data-baseweb="tab"] {
-        font-size: clamp(13px, 1.25vw, 20px) !important;
+        font-size: clamp(15px, 1.4vw, 22px) !important;
         font-weight: 500 !important;
         line-height: 1.15 !important;
         padding: clamp(6px,0.8vw,12px) clamp(10px,1.3vw,18px) !important;
@@ -140,6 +149,12 @@ st.markdown("""
         }
     }
 
+    @media (min-width: 1600px) {
+        div[data-baseweb="tab"] {
+            font-size: clamp(18px, 1.2vw, 24px) !important;
+        }
+    }
+    
     /* Supprime les espaces résiduels éventuels */
     [data-testid="stVerticalBlock"] {
         margin-bottom: 0;
