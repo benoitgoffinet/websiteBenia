@@ -227,7 +227,8 @@ Il devient alors difficile d’<strong>anticiper l’affluence</strong> des spec
 </p>
             <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Solution</h2>
             <p style="font-size:18px; line-height:1.6;">Pour répondre à cette problématique, BenIA.solutions propose d’exploiter et d’analyser vos données historiques de fréquentation afin d’identifier les tendances observées au fil du temps.<br>
-Grâce à un <strong>dashboard interactif</strong>, vous pourrez visualiser et <strong>anticiper l’affluence</strong> des spectacles et mieux préparer l’organisation de vos représentations.<p/>
+BenIA.solutions développe ensuite un dashboard interactif permettant d’analyser les données de fréquentation, d’anticiper l’affluence des spectacles et d’accompagner l’organisation des représentations.
+<p/>
             <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Bénéfices</h2>
             <ul style="font-size:18px; line-height:1.6;">
             <li><strong>✔ Anticipation de la fréquentation</strong> <br>
@@ -245,11 +246,15 @@ Sur plusieurs représentations, cela peut représenter un gain significatif sur 
             Disposer d’une estimation de l’affluence permet d’adapter l’organisation des spectacles, notamment la gestion des équipes, la communication ou la logistique des événements.<br><br></li>
             <li><strong>✔ Une meilleure compréhension de l’impact des décisions d’organisation</strong><br>
             L’analyse des données permet d’identifier les choix qui favorisent la fréquentation et d’ajuster progressivement l’organisation et la programmation des spectacles.</li>
-            <ul/>
+            </ul>
             <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Avant l’analyse des données</h2>
-               <p style="font-size:18px; line-height:1.6;">Les décisions d’organisation et de programmation reposent principalement sur l’expérience, l’intuition ou des informations dispersées.<p/>
-               <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Après l’analyse des données</h2>
-               <p style="font-size:18px; line-height:1.6;">Les équipes disposent d’indicateurs clairs permettant d’anticiper la fréquentation, d’identifier les tendances et d’orienter plus facilement les décisions.<p/>
+            <p style="font-size:18px; line-height:1.6;">Les informations utiles à la prise de décision sont souvent <strong>dispersées, peu accessibles ou difficiles à exploiter.</strong><br>
+            Les décisions d’organisation et de programmation reposent alors principalement <strong>sur l’expérience ou l’intuition.</strong>
+            <p/>
+             <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Après l’analyse des données</h2>
+             <p style="font-size:18px; line-height:1.6;">BenIA.solutions met à disposition un <strong>dashboard interactif</strong> permettant de centraliser et d’exploiter les données de fréquentation.<br>
+            Les équipes disposent alors d’indicateurs clairs pour <strong>anticiper la fréquentation, identifier les tendances et orienter plus facilement les décisions d’organisation et de programmation.</strong>
+            <p/>
             </div>
     </div>
     """,
@@ -416,7 +421,7 @@ with tabs[4]:
             <h1 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Contact</h1>
             <p style="font-size:18px; line-height:1.6;">Vous pouvez me contacter via :</p>          
             <p style="font-size:18px; line-height:1.6;">Email : benoit@benia.solutions</p>
-            <p style="font-size:18px; line-height:1.6;">Téléphone : 0608900285</p>
+            <p style="font-size:18px; line-height:1.6;">Téléphone : 06 08 90 02 85</p>
             <p style="font-size:18px; line-height:1.6;"><a href="https://www.linkedin.com/in/benoit-goffinet-devweb/" target="_blank" style="color:#B8C1CC; text-decoration:none;">LinkedIn</a></p>
             <p style="font-size:18px; line-height:1.6;"><a href="https://github.com/benoitgoffinet" target="_blank" style="color:#B8C1CC; text-decoration:none;">GitHub</a></p>
             </div>
