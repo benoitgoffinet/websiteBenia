@@ -164,7 +164,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-tabs = st.tabs(["Présentation", "Solution / Dashboard interactif", "Accéder au Dashboard", "A propos", "Contact"])
+tabs = st.tabs(["Présentation", "Solution / Dashboard interactif", "Accéder au Dashboard", "A propos", "Questions/réponses", "Contact"])
 # --- Onglet 1 : Présentation ---
 with tabs[0]:
    
@@ -396,10 +396,75 @@ N’hésitez pas à me contacter pour échanger sur votre projet.</p>
     """,
     unsafe_allow_html=True
 )
-  
 
-# --- Onglet 5 : Contact ---
-with tabs[4]:
+
+# --- Onglet 5 : Questions/réponses
+with tabs[1]: 
+    st.markdown(
+    f"""
+    <div style="
+        width: 100%;
+        font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+        background-image: url('data:image/png;base64,{assets['solution']}');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    ">
+        <!-- Overlay semi-transparent pour le texte -->
+        <div style="
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            padding: 4rem;
+            box-sizing: border-box;
+            color: #B8C1CC;
+        ">
+            <!-- questions-->
+            <h1 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Questions/Réponses</h1>
+            <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">💼 Quels services proposes-tu ?</h2>
+            <p style="font-size:18px; line-height:1.6;">
+Je conçois des dashboards interactifs permettant de visualiser et piloter vos données facilement.<br>
+Mon offre comprend :<p/>
+<ul style="font-size:18px; line-height:1.6;">
+            <li> une analyse complète de vos données (tendances, variables clés, insights)</li>
+            <li> la création d’un dashboard sur mesure</li>
+            <li> un accompagnement à la prise en main</li>
+             </ul>
+             <p style="font-size:18px; line-height:1.6;">
+L’hébergement et la maintenance sont inclus pendant 6 mois.<br>
+Au-delà, un abonnement permet de continuer avec des mises à jour régulières des données.<p/>
+            <p style="font-size:18px; line-height:1.6;">
+Le paiement se fait en deux étapes :<p/>
+            <ul style="font-size:18px; line-height:1.6;">
+            <li><strong>50% à l’acceptation du devis (acompte)</strong></li>
+            <li><strong>50% à la livraison du dashboard</strong></li>
+             <ul/>
+            <p style="font-size:18px; line-height:1.6;">
+Cela permet de sécuriser le démarrage du projet et de garantir un engagement des deux côtés.<br>
+Mes prestations se situent entre 2500€ et 7000€.<p/>
+<h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">📊 Qu’est-ce que j’apporte à votre entreprise ?</h2>
+            <p style="font-size:18px; line-height:1.6;">
+Je ne me contente pas de créer des dashboards : je vous aide à comprendre vos données, anticiper les tendances et prendre de meilleures décisions.<br>
+Mon approche est orientée résultats :<p/>
+<ul style="font-size:18px; line-height:1.6;">
+            <li>analyse approfondie des données</li>
+            <li>dashboards clairs et adaptés à vos enjeux métier</li>
+            <li>modèles de prédiction pour anticiper l'affluence de vos représentations</li>
+            <li>interfaces simples vous permettant de réaliser vos propres analyses et projections</li>
+            <li>accompagnement pour vous rendre autonome</li>
+             </ul>
+             <p style="font-size:18px; line-height:1.6;">
+L’objectif n’est pas seulement de livrer un outil, mais de vous apporter une vraie valeur business durable.<br>
+👉 Le plus simple est d’échanger rapidement pour vous donner une estimation précise selon votre besoin.<p/>
+            </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# --- Onglet 6 : Contact ---
+with tabs[5]:
     st.markdown(
     f"""
     <div style="
