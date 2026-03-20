@@ -390,7 +390,7 @@ Lorsque cela est nécessaire, les données peuvent être anonymisées ou agrég�
             <p style="font-size:18px; line-height:1.6;">Vous souhaitez explorer vos <strong>données de fréquentation</strong> et mieux <strong>anticiper l’affluence</strong> de vos spectacles ?
 N’hésitez pas à me contacter pour échanger sur votre projet.</p>
             <p style="font-size:18px; line-height:1.6;">Email : benoit@benia.solutions</p>
-            <p style="font-size:18px; line-height:1.6;">Téléphone : 06 08 90 02 85</p>
+            <p style="font-size:18px; line-height:1.6;">Téléphone : 07 67 65 92 51</p>
             </div>
     </div>
     """,
@@ -489,7 +489,7 @@ with tabs[5]:
             <h1 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Contact</h1>
             <p style="font-size:18px; line-height:1.6;">Vous pouvez me contacter via :</p>          
             <p style="font-size:18px; line-height:1.6;">Email : benoit@benia.solutions</p>
-            <p style="font-size:18px; line-height:1.6;">Téléphone : 06 08 90 02 85</p>
+            <p style="font-size:18px; line-height:1.6;">Téléphone : 07 67 65 92 51</p>
             <p style="font-size:18px; line-height:1.6;"><a href="https://www.linkedin.com/in/benoit-goffinet-devweb/" target="_blank" style="color:#B8C1CC; text-decoration:none;">LinkedIn</a></p>
             <p style="font-size:18px; line-height:1.6;"><a href="https://github.com/benoitgoffinet" target="_blank" style="color:#B8C1CC; text-decoration:none;">GitHub</a></p>
             </div>
