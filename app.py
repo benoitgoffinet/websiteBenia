@@ -442,7 +442,7 @@ Le paiement se fait en deux étapes :<p/>
              <ul/>
             <p style="font-size:18px; line-height:1.6;">
 Cela permet de sécuriser le démarrage du projet et de garantir un engagement des deux côtés.<br>
-Mes prestations se situent entre 2500€ et 7000€.<p/>
+Mes prestations débutent à partir de 2500 €, en fonction de votre projet.<p/>
 <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">📊 Qu’est-ce que j’apporte à votre entreprise ?</h2>
             <p style="font-size:18px; line-height:1.6;">
 Je ne me contente pas de créer des dashboards : je vous aide à comprendre vos données, anticiper les tendances et prendre de meilleures décisions.<br>
