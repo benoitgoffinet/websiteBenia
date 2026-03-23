@@ -281,36 +281,37 @@ if show_legal_notice:
     if default_section == "presentation":
         default_section = "mentions-legales"
         
-section_map = dict(section_options)
-section_labels = [label for label, _ in section_options]
+label_by_key = {key: label for label, key in section_options}
 section_keys = [key for _, key in section_options]
+
+def sync_navigation_query_params():
+    st.query_params["section"] = st.session_state.selected_section
+    if st.session_state.selected_section == "mentions-legales":
+        st.query_params["view"] = "mentions-legales"
+    else:
+        st.query_params.pop("view", None)
 
 if "selected_section" not in st.session_state or st.session_state.selected_section not in section_keys:
     st.session_state.selected_section = default_section if default_section in section_keys else section_keys[0]
-
+    sync_navigation_query_params()
+    
 selected_index = section_keys.index(st.session_state.selected_section)
 
 st.markdown('<div class="main-nav-shell">', unsafe_allow_html=True)
-selected_label = st.radio(
+selected_section = st.radio(
     "Navigation",
-    section_labels,
+    section_keys,
     index=selected_index,
+    format_func=lambda key: label_by_key[key],
     horizontal=True,
     label_visibility="collapsed",
+    key="selected_section",
+    on_change=sync_navigation_query_params,
 )
 st.markdown('</div>', unsafe_allow_html=True)
-selected_section = section_map[selected_label]
-if selected_section != st.session_state.selected_section:
-    st.session_state.selected_section = selected_section
+sync_navigation_query_params()
 
-query_params["section"] = st.session_state.selected_section
-if st.session_state.selected_section == "mentions-legales":
 
-    query_params["view"] = "mentions-legales"
-else:
-    query_params.pop("view", None)
-
-selected_section = st.session_state.selected_section
 # --- Onglet 1 : Présentation ---
 if selected_section == "presentation":   
    
