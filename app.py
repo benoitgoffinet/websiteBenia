@@ -540,7 +540,6 @@ with tabs[5]:
     
 st.markdown("""
     <footer class="site-footer">
-        <h2>Informations essentielles</h2>
         <p><strong>Nom :</strong> Benoît Goffinet</p>
         <p><strong>Email :</strong> <a href="mailto:benoit@benia.solutions">benoit@benia.solutions</a></p>
         <p><strong>Téléphone :</strong> <a href="tel:+33767659251">07 67 65 92 51</a></p>
