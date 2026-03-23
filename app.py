@@ -60,7 +60,7 @@ header {
             padding-bottom: 0.01rem;
             padding-left: 0.1rem;
             padding-right: 0.1rem;
-            background-color: #B8C1CC;
+            background: linear-gradient(180deg, #E7EEF5 0%, #D7E1EA 100%);
 
         }
 
@@ -76,7 +76,9 @@ header {
         .content-panel {
             width: min(1500px, 96vw);
             margin-inline: auto;
-            background-color: rgba(0,0,0,0.78);
+            background: rgba(248,250,252,0.88);
+            border: 1px solid rgba(15,23,42,0.08);
+            box-shadow: 0 20px 45px rgba(15,23,42,0.16);
             border-radius: 1.25rem;
             padding: clamp(1rem, 3vw, 2.5rem);
         }
@@ -87,7 +89,7 @@ header {
             padding: 0.9rem 1.4rem;
             border-radius: 0.75rem;
             background-color: #FACC15;
-            color: #111827 !important;
+            color: #0F172A !important;
             text-decoration: none;
             font-size: clamp(1rem, 1.2vw, 1.15rem);
             font-weight: 700;
@@ -96,9 +98,10 @@ header {
             width: min(1500px, 96vw);
             margin: 0 auto;
             padding: 1.5rem clamp(1rem, 3vw, 2.5rem) 2rem;
-            background-color: #111827;
-            color: #F9FAFB;
-            border-top: 4px solid #FACC15;
+            background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+            color: #0F172A;
+            border-top: 4px solid #B45309;
+            box-shadow: 0 -12px 30px rgba(15,23,42,0.08);
             border-radius: 0 0 1.25rem 1.25rem;
         }
 
@@ -114,7 +117,8 @@ header {
         }
 
         .site-footer a {
-            color: #FACC15 !important;
+            color: #92400E !important;
+            font-weight: 600;
             text-decoration: none;
         }
     </style>
@@ -159,12 +163,23 @@ st.markdown("""
     /* Style optionnel des onglets */
     div[data-baseweb="tab"] {
         font-size: clamp(15px, 1.4vw, 22px) !important;
-        font-weight: 500 !important;
+        font-weight: 600 !important;
         line-height: 1.15 !important;
         padding: clamp(6px,0.8vw,12px) clamp(10px,1.3vw,18px) !important;
         min-height: clamp(38px, 4.5vh, 52px) !important;
         white-space: normal !important;
         text-align: center !important;
+        color: #0F172A !important;
+        background-color: rgba(248,250,252,0.92) !important;
+        border-radius: 0.85rem !important;
+        border: 1px solid rgba(15,23,42,0.10) !important;
+    }
+
+    button[role="tab"][aria-selected="true"] {
+        background-color: #FACC15 !important;
+        color: #0F172A !important;
+        border-color: #B45309 !important;
+        box-shadow: 0 10px 24px rgba(180, 83, 9, 0.18);
     }
 
     @media (max-width: 900px) {
@@ -213,8 +228,8 @@ with tabs[0]:
         align-items: center;
     ">
         <div class="content-panel">
-            <h1 style="color:#B8C1CC; text-align:center; font-family: 'Times New Roman', Times, serif; font-size: clamp(0.5rem, 7vw + 1rem, 5rem);">{'BenIA.solutions<br> Data Consultant spécialisé dans les structures culturelles'}</h1>
-         <p style="color:#B8C1CC; text-align:center; font-family: 'Times New Roman', Times, serif; font-size: clamp(0.3rem, 4vw + 1rem, 3rem);">Anticipez le remplissage de vos spectacles et pilotez votre programmation grâce à l’analyse de vos propres données.</p>
+             <h1 style="color:#0F172A; text-align:center; font-family: 'Times New Roman', Times, serif; font-size: clamp(0.5rem, 7vw + 1rem, 5rem);">{'BenIA.solutions<br> Data Consultant spécialisé dans les structures culturelles'}</h1>
+         <p style="color:#0F172A; text-align:center; font-family: 'Times New Roman', Times, serif; font-size: clamp(0.3rem, 4vw + 1rem, 3rem);">Anticipez le remplissage de vos spectacles et pilotez votre programmation grâce à l’analyse de vos propres données.</p>
         </div>
     </div>
     """,
@@ -240,24 +255,24 @@ with tabs[1]:
         <div style="
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(248,250,252,0.86);
             padding: 4rem;
             box-sizing: border-box;
-            color: #B8C1CC;
+            color: #0F172A;
         ">
             <!-- Offre -->
-            <h1 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">L'Offre de BenIA.solutions</h1>
-            <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Problème</h2>
+            <h1 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">L'Offre de BenIA.solutions</h1>
+            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Problème</h2>
             <p style="font-size:18px; line-height:1.6;">
 De nombreuses <strong>structures culturelles</strong> disposent de données historiques, mais celles-ci sont rarement utilisées pour piloter l’organisation des événements.
 Il devient alors difficile d’<strong>anticiper l’affluence</strong> des spectacles et d’optimiser le remplissage des représentations.
 
 </p>
-            <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Solution</h2>
+            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Solution</h2>
             <p style="font-size:18px; line-height:1.6;">Pour répondre à cette problématique, BenIA.solutions propose d’exploiter et d’analyser vos données historiques de fréquentation afin d’identifier les tendances observées au fil du temps.<br>
 BenIA.solutions développe ensuite un dashboard interactif permettant d’analyser les données de fréquentation, d’anticiper l’affluence des spectacles et d’accompagner l’organisation des représentations.
 </p>
-            <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Bénéfices</h2>
+            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Bénéfices</h2>
             <ul style="font-size:18px; line-height:1.6;">
             <li><strong>✔ Anticipation de la fréquentation</strong> <br>
             L’analyse des données permet d’estimer l’affluence probable d’un spectacle et d’anticiper les périodes ou représentations susceptibles d’attirer le plus de public.<br><br>
@@ -279,7 +294,7 @@ Sur plusieurs représentations, cela peut représenter un gain significatif sur 
             <p style="font-size:18px; line-height:1.6;">Les informations utiles à la prise de décision sont souvent <strong>dispersées, peu accessibles ou difficiles à exploiter.</strong><br>
             Les décisions d’organisation et de programmation reposent alors principalement <strong>sur l’expérience ou l’intuition.</strong>
             </p>
-             <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Après l’analyse des données</h2>
+             <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Après l’analyse des données</h2>
              <p style="font-size:18px; line-height:1.6;">BenIA.solutions met à disposition un <strong>dashboard interactif</strong> permettant de centraliser et d’exploiter les données de fréquentation.<br>
             Les équipes disposent alors d’indicateurs clairs pour <strong>anticiper la fréquentation, identifier les tendances et orienter plus facilement les décisions d’organisation et de programmation.</strong>
             </p>
@@ -307,13 +322,13 @@ with tabs[2]:
         <div style="
             top: 0; left: 0;
             width: 100%; 
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(248,250,252,0.86);
             padding: 4rem;
             box-sizing: border-box;
-            color: #B8C1CC;
+            color: #0F172A;
         ">
             <!-- Offre -->
-            <h1 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Démonstration du dashboard</h1>
+            <h1 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Démonstration du dashboard</h1>
             <p style="font-size:18px; line-height:1.6;">
 Cette démonstration permet d'explorer un exemple de dashboard interactif
     dédié à l'analyse de la fréquentation des événements culturels.<br>
@@ -324,7 +339,7 @@ Le dashboard permet notamment de :
             <li>explorer les données selon différentes variables</li>
             <li>utiliser un prédicteur pour estimer l'affluence</li>
             </ul>
-            <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Accéder à la démonstration interactive</h2>
+            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Accéder à la démonstration interactive</h2>
             <p>Les données utilisées dans cette démonstration sont fictives et présentées uniquement à des fins d’illustration.<br>
             Le dashboard peut être adapté aux données propres à chaque structure culturelle et enrichi avec différentes variables selon les besoins d’analyse.</p>
             <a class="cta-link" href="https://web-production-269e5.up.railway.app/" target="_blank" rel="noopener noreferrer">🚀 Tester la démo interactive</a>
@@ -352,25 +367,25 @@ with tabs[3]:
         <div style="
             top: 0; left: 0;
             width: 100%; 
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(248,250,252,0.86);
             padding: 4rem;
             box-sizing: border-box;
-            color: #B8C1CC;
+            color: #0F172A;
         ">
             <!-- Offre -->
-            <h1 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">BenIA.solutions</h1>
-            <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Le projet</h2>
+            <h1 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">BenIA.solutions</h1>
+            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Le projet</h2>
             <p style="font-size:18px; line-height:1.6;">
 BenIA.solutions est un projet dédié à l’analyse et à la valorisation des données dans le secteur culturel.
 L’objectif est d’aider les <strong>structures culturelles</strong> à mieux comprendre la fréquentation de leurs événements et à piloter leur programmation grâce à l’analyse de leurs données.
 </p>
-            <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Le fondateur</h2>
+            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Le fondateur</h2>
             <p style="font-size:18px; line-height:1.6;">
 Je suis Benoît Goffinet, fondateur de BenIA.solutions et consultant en analyse de données.
 Je mets mes compétences en data, en intelligence artificielle et en visualisation de données au service des <strong>structures culturelles</strong> afin de transformer leurs données en outils d’aide à la décision et d’anticiper la fréquentation des spectacles.<br>
 Mon travail repose sur une combinaison de rigueur analytique, de créativité et de pédagogie, afin de proposer des outils clairs, utiles et adaptés aux besoins des équipes. Passionné par les événements culturels et le spectacle vivant, je m’attache également à comprendre les enjeux spécifiques des structures que j’accompagne.
 </p>
-            <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Formation</h2>
+            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Formation</h2>
             <p style="font-size:18px; line-height:1.6;">
 Je suis diplômé d’une formation diplômante d’ingénieur en Machine Learning, centrée sur l’analyse de données et les techniques de modélisation.<br>
 Cette formation m’a permis d’acquérir des compétences en :
@@ -384,12 +399,12 @@ Cette formation m’a permis d’acquérir des compétences en :
             <p>
 Ces compétences sont aujourd’hui mobilisées dans le développement de BenIA.solutions.
 </p>
-<h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Mon approche</h2>
+<h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Mon approche</h2>
             <p style="font-size:18px; line-height:1.6;">
 Mon approche consiste à transformer les données existantes en outils d’aide à la décision accessibles et interactifs.<br>
 Grâce à l’analyse des données, à la visualisation et à la modélisation, il devient possible de mieux comprendre les comportements de fréquentation et d’accompagner les équipes dans leurs décisions.
 </p>
-<h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Mes compétences</h2>
+<h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Mes compétences</h2>
             <p style="font-size:18px; line-height:1.6;">
 Au-delà des compétences techniques, mon travail repose également sur plusieurs qualités essentielles :
 </p>    
@@ -399,19 +414,19 @@ Au-delà des compétences techniques, mon travail repose également sur plusieur
             <li>écoute des besoins pour adapter les outils aux réalités des <strong>structures culturelles</strong></li>
             <li>compréhension des besoins des <strong>structures culturelles</strong></li>
             </ul>
-<h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Pourquoi ce projet</h2>
+<h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Pourquoi ce projet</h2>
             <p style="font-size:18px; line-height:1.6;">
 Le secteur culturel produit aujourd’hui de nombreuses données (billetterie, fréquentation, programmation), mais ces informations sont rarement exploitées de manière approfondie.<br>
 BenIA.solutions vise à valoriser ces données et à les rendre utiles pour le pilotage des activités culturelles.
 </p>
-           <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Traitement des données</h2>
+           <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Traitement des données</h2>
             <p style="font-size:18px; line-height:1.6;">
 Les données utilisées dans le cadre des analyses restent la propriété de la structure culturelle.<br>
 Les informations fournies sont utilisées uniquement dans le but de réaliser les analyses nécessaires au fonctionnement du dashboard et à l’accompagnement proposé.<br>
 Aucune donnée n’est transmise à des tiers.<br>
 Lorsque cela est nécessaire, les données peuvent être anonymisées ou agrégées afin de garantir la confidentialité des informations.
 </p>    
-            <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Discutons de votre projet </h2>
+            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Discutons de votre projet </h2>
             <p style="font-size:18px; line-height:1.6;">Vous souhaitez explorer vos <strong>données de fréquentation</strong> et mieux <strong>anticiper l’affluence</strong> de vos spectacles ?
 N’hésitez pas à me contacter pour échanger sur votre projet.</p>
             <p style="font-size:18px; line-height:1.6;">Email : benoit@benia.solutions</p>
@@ -440,14 +455,14 @@ with tabs[4]:
         <div style="
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(248,250,252,0.86);
             padding: 4rem;
             box-sizing: border-box;
-            color: #B8C1CC;
+            color: #0F172A;
         ">
             <!-- questions-->
-            <h1 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Questions/Réponses</h1>
-            <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">💼 Quels services proposes-tu ?</h2>
+            <h1 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Questions/Réponses</h1>
+            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">💼 Quels services proposes-tu ?</h2>
             <p style="font-size:18px; line-height:1.6;">
 Je conçois des dashboards interactifs permettant de visualiser et piloter vos données facilement.<br>
 Mon offre comprend :<p/>
@@ -468,7 +483,7 @@ Le paiement se fait en deux étapes :<p/>
             <p style="font-size:18px; line-height:1.6;">
 Cela permet de sécuriser le démarrage du projet et de garantir un engagement des deux côtés.<br>
 Mes prestations débutent à partir de 2500 €, en fonction de votre projet.<p/>
-<h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">📊 Qu’est-ce que j’apporte à votre entreprise ?</h2>
+<h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">📊 Qu’est-ce que j’apporte à votre entreprise ?</h2>
             <p style="font-size:18px; line-height:1.6;">
 Je ne me contente pas de créer des dashboards : je vous aide à comprendre vos données, anticiper les tendances et prendre de meilleures décisions.<br>
 Mon approche est orientée résultats :<p/>
@@ -506,17 +521,17 @@ with tabs[5]:
             position: absolute;
             top: 0; left: 0;
             width: 100%; 
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgba(248,250,252,0.78);
             padding: 40px;
             box-sizing: border-box;
-            color: #B8C1CC;
+            color: #0F172A;
         ">
-            <h1 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Contact</h1>
+            <h1 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Contact</h1>
             <p style="font-size:18px; line-height:1.6;">Vous pouvez me contacter via :</p>          
             <p style="font-size:18px; line-height:1.6;">Email : benoit@benia.solutions</p>
             <p style="font-size:18px; line-height:1.6;">Téléphone : 07 67 65 92 51</p>
-            <p style="font-size:18px; line-height:1.6;"><a href="https://www.linkedin.com/in/benoit-goffinet-devweb/" target="_blank" style="color:#B8C1CC; text-decoration:none;">LinkedIn</a></p>
-            <p style="font-size:18px; line-height:1.6;"><a href="https://github.com/benoitgoffinet" target="_blank" style="color:#B8C1CC; text-decoration:none;">GitHub</a></p>
+            <p style="font-size:18px; line-height:1.6;"><a href="https://www.linkedin.com/in/benoit-goffinet-devweb/" target="_blank" style="color:#92400E; text-decoration:none; font-weight:600;">LinkedIn</a></p>
+            <p style="font-size:18px; line-height:1.6;"><a href="https://github.com/benoitgoffinet" target="_blank" style="color:#92400E; text-decoration:none; font-weight:600;">GitHub</a></p>
             </div>
     </div>
     """,
@@ -530,4 +545,4 @@ st.markdown("""
         <p><strong>Email :</strong> <a href="mailto:benoit@benia.solutions">benoit@benia.solutions</a></p>
         <p><strong>Téléphone :</strong> <a href="tel:+33767659251">07 67 65 92 51</a></p>
     </footer>
-""", unsafe_allow_html=True)    
+""", unsafe_allow_html=True)
