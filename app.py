@@ -242,11 +242,8 @@ else:
     query_params.pop("view", None)
     
 # --- Onglet 1 : Présentation ---
-with tabs[0]:
- if selected_section == "presentation":   
+if selected_section == "presentation":   
    
-
-
 # Affichage de l'image en background avec overlay texte
    st.markdown(
     f"""
@@ -275,8 +272,8 @@ with tabs[0]:
 
     
 # --- Onglet 2 : Offre
-with tabs[1]: 
- if selected_section == "solution": 
+
+if selected_section == "solution": 
     st.markdown(
     f"""
     <div style="
@@ -342,8 +339,8 @@ Sur plusieurs représentations, cela peut représenter un gain significatif sur 
 )
 
 # --- Onglet 3 : dashboard
-with tabs[2]: 
- if selected_section == "dashboard": 
+
+if selected_section == "dashboard": 
     st.markdown(
     f"""
     <div style="
@@ -389,8 +386,8 @@ Le dashboard permet notamment de :
     
 
 # --- Onglet 4 : A propos
-with tabs[3]: 
- if selected_section == "apropos": 
+
+if selected_section == "apropos": 
     st.markdown(
     f"""
     <div style="
@@ -478,8 +475,8 @@ N’hésitez pas à me contacter pour échanger sur votre projet.</p>
 
 
 # --- Onglet 5 : Questions/réponses
-with tabs[4]: 
- if selected_section == "faq": 
+
+if selected_section == "faq": 
     st.markdown(
     f"""
     <div style="
@@ -534,8 +531,8 @@ L’objectif n’est pas seulement de livrer un outil, mais de vous apporter une
 )
 
 # --- Onglet 6 : Contact ---
-with tabs[5]:
- if selected_section == "contact":
+
+if selected_section == "contact":
     st.markdown(
     f"""
     <div style="
@@ -569,7 +566,7 @@ with tabs[5]:
     unsafe_allow_html=True
 )
 
- if selected_section == "mentions-legales":
+if selected_section == "mentions-legales":
     st.markdown(
     """
     <div style="
