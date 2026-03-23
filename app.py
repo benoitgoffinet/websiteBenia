@@ -169,17 +169,17 @@ st.markdown("""
     }
 
     div[role="radiogroup"] {
-        display: flex !important;
-        flex-wrap: wrap;
+        display: grid !important;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
         gap: 0.65rem;
-        justify-content: center;
         align-items: stretch;
+        width: 100%;
     }
 
     div[role="radiogroup"] label {
         margin: 0 !important;
-        flex: 1 1 220px;
-        min-width: min(220px, 100%);
+        min-width: 0;
+        width: 100%;
     }
 
     div[role="radiogroup"] label > div:first-child {
@@ -193,9 +193,9 @@ st.markdown("""
     div[role="radiogroup"] label[data-baseweb="radio"] {
         background: rgba(248,250,252,0.92);
         border: 1px solid rgba(15,23,42,0.10);
-        border-radius: 0.95rem;
-        padding: 0.85rem 1rem;
-        min-height: 64px;
+        border-radius: 999px;
+        padding: 0.95rem 1.1rem;
+        min-height: 68px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -223,7 +223,11 @@ st.markdown("""
         color: #0F172A !important;
         line-height: 1.25 !important;
     }
-
+    @media (max-width: 1100px) {
+        div[role="radiogroup"] {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
     @media (max-width: 900px) {
         .main-nav-shell {
             top: 0.25rem;
@@ -231,23 +235,21 @@ st.markdown("""
         }
 
         div[role="radiogroup"] {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 0.45rem;
         }
 
-        div[role="radiogroup"] label {
-            flex-basis: calc(50% - 0.45rem);
-            min-width: 140px;
-        }
 
         div[role="radiogroup"] label[data-baseweb="radio"] {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             min-height: 58px;
             padding: 0.75rem 0.8rem;
+            border-radius: 1rem;
         }
     }
     @media (max-width: 640px) {
-        div[role="radiogroup"] label {
-            flex-basis: 100%;
-            min-width: 100%;
+        div[role="radiogroup"] {
+            grid-template-columns: 1fr;
     
         }
     }
@@ -291,7 +293,7 @@ selected_label = st.radio(
     horizontal=True,
     label_visibility="collapsed",
 )
-st.markdown('<div class="main-nav-shell">', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
 selected_section = dict(section_options)[selected_label]
 query_params["section"] = selected_section
 if selected_section == "mentions-legales":
