@@ -687,22 +687,11 @@ if selected_section == "mentions-legales":
 
 st.markdown(f"""
 <footer class="site-footer">
- <h2>BenIA.solutions</h2>
-    <p>© {CURRENT_YEAR} Goffinet</p> 
+     <p>
+       © {CURRENT_YEAR} Goffinet — 
+        <a href="?section=mentions-legales&view=mentions-legales">Mentions légales</a> | 
+        <a href="?section=contact">Contact</a>
+    </p>
 </footer>
 """, unsafe_allow_html=True)
-
-footer_col1, footer_col2, footer_col3 = st.columns([1.2, 1, 6])
-with footer_col1:
-    if st.button("Mentions légales", key="footer_legal", use_container_width=True):
-        st.session_state.selected_section = "mentions-legales"
-        query_params["section"] = "mentions-legales"
-        query_params["view"] = "mentions-legales"
-        st.rerun()
-with footer_col2:
-    if st.button("Contact", key="footer_contact", use_container_width=True):
-        st.session_state.selected_section = "contact"
-        query_params["section"] = "contact"
-        query_params.pop("view", None)
-        st.rerun()
 
