@@ -46,8 +46,8 @@ st.markdown(
     visibility: hidden;
 }
 
-/* cache le footer Streamlit */
-footer {
+/* cache uniquement le footer natif de Streamlit */
+footer[data-testid="stFooter"] {
     visibility: hidden;
 }
 
@@ -82,6 +82,20 @@ header {
             box-shadow: 0 20px 45px rgba(15,23,42,0.16);
             border-radius: 1.25rem;
             padding: clamp(1rem, 3vw, 2.5rem);
+        }
+
+        .main-nav-shell {
+            position: sticky;
+            top: 0.5rem;
+            z-index: 100;
+            width: min(1500px, 96vw);
+            margin: 0.75rem auto 0.4rem;
+            padding: 0.55rem;
+            border-radius: 1.2rem;
+            background: rgba(226,232,240,0.82);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(15,23,42,0.10);
+            box-shadow: 0 14px 32px rgba(15,23,42,0.10);
         }
 
         .cta-link {
@@ -150,49 +164,91 @@ st.markdown("""
         padding-bottom: 0;
     }
     
-    /* Supprime les marges automatiques autour de la barre d'onglets */
-    div[data-baseweb="tab-list"] {
-        min-height: clamp(52px, 7vh, 96px);           
+    div[data-testid="stRadio"] > div {
+        background: transparent;
+    }
+
+    div[role="radiogroup"] {
+        display: flex !important;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    div[role="radiogroup"] label {
+        margin: 0 !important;
+        flex: 1 1 220px;
+        min-width: min(220px, 100%);
+    }
+
+    div[role="radiogroup"] label > div:first-child {
+        display: none;
+    }
+
+    div[role="radiogroup"] label p {
+        margin: 0;
+    }
+
+    div[role="radiogroup"] label[data-baseweb="radio"] {
+        background: rgba(248,250,252,0.92);
+        border: 1px solid rgba(15,23,42,0.10);
+        border-radius: 0.95rem;
+        padding: 0.85rem 1rem;
+        min-height: 64px;
         display: flex;
         align-items: center;
-        justify-content: space-around;
-        margin-bottom: 0;               /* ❌ aucune marge en dessous */
-        padding-bottom: 0;              /* ❌ aucune marge interne */
-        gap: clamp(0.2rem, 1vw, 1rem);
+        justify-content: center;
+        text-align: center;
+        transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+        box-shadow: 0 8px 20px rgba(15,23,42,0.06);
+        cursor: pointer;
+    }
+    
+    div[role="radiogroup"] label[data-baseweb="radio"]:hover {
+        transform: translateY(-1px);
+        border-color: rgba(180,83,9,0.45);
+        box-shadow: 0 12px 24px rgba(15,23,42,0.10);
     }
 
-    /* Style optionnel des onglets */
-    div[data-baseweb="tab"] {
-        font-size: clamp(15px, 1.4vw, 22px) !important;
-        font-weight: 600 !important;
-        line-height: 1.15 !important;
-        padding: clamp(6px,0.8vw,12px) clamp(10px,1.3vw,18px) !important;
-        min-height: clamp(38px, 4.5vh, 52px) !important;
-        white-space: normal !important;
-        text-align: center !important;
-        color: #0F172A !important;
-        background-color: rgba(248,250,252,0.92) !important;
-        border-radius: 0.85rem !important;
-        border: 1px solid rgba(15,23,42,0.10) !important;
+    div[role="radiogroup"] label[data-baseweb="radio"][aria-checked="true"] {
+        background: linear-gradient(135deg, rgba(250,204,21,0.96) 0%, rgba(245,158,11,0.96) 100%);
+        border-color: #B45309;
+        box-shadow: 0 14px 28px rgba(180, 83, 9, 0.18);
     }
 
-    button[role="tab"][aria-selected="true"] {
-        background-color: #FACC15 !important;
+    div[role="radiogroup"] label[data-baseweb="radio"] span {
+        font-size: clamp(0.96rem, 1.15vw, 1.08rem) !important;
+        font-weight: 700 !important;
         color: #0F172A !important;
-        border-color: #B45309 !important;
-        box-shadow: 0 10px 24px rgba(180, 83, 9, 0.18);
+        line-height: 1.25 !important;
     }
 
     @media (max-width: 900px) {
-        div[data-baseweb="tab"] {
-            font-size: clamp(12px, 3.2vw, 15px) !important;
-            padding: clamp(6px, 1.8vw, 10px) clamp(8px, 2vw, 12px) !important;
+        .main-nav-shell {
+            top: 0.25rem;
+            padding: 0.5rem;
+        }
+
+        div[role="radiogroup"] {
+            gap: 0.45rem;
+        }
+
+        div[role="radiogroup"] label {
+            flex-basis: calc(50% - 0.45rem);
+            min-width: 140px;
+        }
+
+        div[role="radiogroup"] label[data-baseweb="radio"] {
+            min-height: 58px;
+            padding: 0.75rem 0.8rem;
         }
     }
-
-    @media (min-width: 1600px) {
-        div[data-baseweb="tab"] {
-            font-size: clamp(18px, 1.2vw, 24px) !important;
+    @media (max-width: 640px) {
+        div[role="radiogroup"] label {
+            flex-basis: 100%;
+            min-width: 100%;
+    
         }
     }
     
@@ -227,6 +283,7 @@ section_labels = [label for label, _ in section_options]
 section_keys = [key for _, key in section_options]
 selected_index = section_keys.index(default_section) if default_section in section_keys else 0
 
+st.markdown('<div class="main-nav-shell">', unsafe_allow_html=True)
 selected_label = st.radio(
     "Navigation",
     section_labels,
@@ -234,6 +291,7 @@ selected_label = st.radio(
     horizontal=True,
     label_visibility="collapsed",
 )
+st.markdown('<div class="main-nav-shell">', unsafe_allow_html=True)
 selected_section = dict(section_options)[selected_label]
 query_params["section"] = selected_section
 if selected_section == "mentions-legales":
