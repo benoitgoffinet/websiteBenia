@@ -688,8 +688,7 @@ if selected_section == "mentions-legales":
 st.markdown(f"""
 <footer class="site-footer">
  <h2>BenIA.solutions</h2>
-    <p>© {CURRENT_YEAR} Goffinet</p>
-    <p>Navigation rapide sans quitter la page.</p>   
+    <p>© {CURRENT_YEAR} Goffinet</p> 
 </footer>
 """, unsafe_allow_html=True)
 
