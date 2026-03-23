@@ -1,6 +1,7 @@
 import streamlit as st
 import base64
 from pathlib import Path
+from datetime import datetime
 
 #fonction
     
@@ -23,7 +24,7 @@ def load_assets():
 
 # Encoder les images de fond
 assets = load_assets()
-
+CURRENT_YEAR = datetime.now().year
 
 
 # Configuration de la page
@@ -204,10 +205,45 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-tabs = st.tabs(["Présentation", "Solution / Dashboard interactif", "Accéder au Dashboard", "A propos", "Questions/réponses", "Contact"])
+query_params = st.query_params
+show_legal_notice = query_params.get("view") == "mentions-legales"
+default_section = query_params.get("section", "presentation")
+
+section_options = [
+    ("Présentation", "presentation"),
+    ("Solution / Dashboard interactif", "solution"),
+    ("Accéder au Dashboard", "dashboard"),
+    ("A propos", "apropos"),
+    ("Questions/réponses", "faq"),
+    ("Contact", "contact"),
+]
+
+if show_legal_notice:
+    section_options.append(("Mentions légales", "mentions-legales"))
+    if default_section == "presentation":
+        default_section = "mentions-legales"
+
+section_labels = [label for label, _ in section_options]
+section_keys = [key for _, key in section_options]
+selected_index = section_keys.index(default_section) if default_section in section_keys else 0
+
+selected_label = st.radio(
+    "Navigation",
+    section_labels,
+    index=selected_index,
+    horizontal=True,
+    label_visibility="collapsed",
+)
+selected_section = dict(section_options)[selected_label]
+query_params["section"] = selected_section
+if selected_section == "mentions-legales":
+    query_params["view"] = "mentions-legales"
+else:
+    query_params.pop("view", None)
+    
 # --- Onglet 1 : Présentation ---
 with tabs[0]:
-   
+if selected_section == "presentation":   
    
 
 
@@ -240,6 +276,7 @@ with tabs[0]:
     
 # --- Onglet 2 : Offre
 with tabs[1]: 
+    if selected_section == "solution": 
     st.markdown(
     f"""
     <div style="
@@ -306,6 +343,7 @@ Sur plusieurs représentations, cela peut représenter un gain significatif sur 
 
 # --- Onglet 3 : dashboard
 with tabs[2]: 
+if selected_section == "dashboard": 
     st.markdown(
     f"""
     <div style="
@@ -350,8 +388,9 @@ Le dashboard permet notamment de :
 )
     
 
-# --- Onglet 3 : A propos
+# --- Onglet 4 : A propos
 with tabs[3]: 
+if selected_section == "apropos": 
     st.markdown(
     f"""
     <div style="
@@ -440,6 +479,7 @@ N’hésitez pas à me contacter pour échanger sur votre projet.</p>
 
 # --- Onglet 5 : Questions/réponses
 with tabs[4]: 
+if selected_section == "faq": 
     st.markdown(
     f"""
     <div style="
@@ -465,38 +505,28 @@ with tabs[4]:
             <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">💼 Quels services proposes-tu ?</h2>
             <p style="font-size:18px; line-height:1.6;">
 Je conçois des dashboards interactifs permettant de visualiser et piloter vos données facilement.<br>
-Mon offre comprend :<p/>
+Mon offre comprend :</p>
 <ul style="font-size:18px; line-height:1.6;">
             <li> une analyse complète de vos données (tendances, variables clés, insights)</li>
             <li> la création d’un dashboard sur mesure</li>
             <li> un accompagnement à la prise en main</li>
              </ul>
              <p style="font-size:18px; line-height:1.6;">
-L’hébergement et la maintenance sont inclus pendant 6 mois.<br>
-Au-delà, un abonnement permet de continuer avec des mises à jour régulières des données.<p/>
+L’hébergement et la maintenance sont inclus pendant 6 mois.
             <p style="font-size:18px; line-height:1.6;">
-Le paiement se fait en deux étapes :<p/>
+Le paiement se fait en deux étapes :</p>
             <ul style="font-size:18px; line-height:1.6;">
             <li><strong>50% à l’acceptation du devis (acompte)</strong></li>
             <li><strong>50% à la livraison du dashboard</strong></li>
-             <ul/>
+             </ul>
             <p style="font-size:18px; line-height:1.6;">
 Cela permet de sécuriser le démarrage du projet et de garantir un engagement des deux côtés.<br>
-Mes prestations débutent à partir de 2500 €, en fonction de votre projet.<p/>
+Mes prestations débutent à partir de 2500 €, en fonction de votre projet.</p>
 <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">📊 Qu’est-ce que j’apporte à votre entreprise ?</h2>
             <p style="font-size:18px; line-height:1.6;">
 Je ne me contente pas de créer des dashboards : je vous aide à comprendre vos données, anticiper les tendances et prendre de meilleures décisions.<br>
-Mon approche est orientée résultats :<p/>
-<ul style="font-size:18px; line-height:1.6;">
-            <li>analyse approfondie des données</li>
-            <li>dashboards clairs et adaptés à vos enjeux métier</li>
-            <li>modèles de prédiction pour anticiper l'affluence de vos représentations</li>
-            <li>interfaces simples vous permettant de réaliser vos propres analyses et projections</li>
-            <li>accompagnement pour vous rendre autonome</li>
-             </ul>
-             <p style="font-size:18px; line-height:1.6;">
 L’objectif n’est pas seulement de livrer un outil, mais de vous apporter une vraie valeur business durable.<br>
-👉 Le plus simple est d’échanger rapidement pour vous donner une estimation précise selon votre besoin.<p/>
+👉 Le plus simple est d’échanger rapidement pour vous donner une estimation précise selon votre besoin./<p>
             </div>
     </div>
     """,
@@ -505,6 +535,7 @@ L’objectif n’est pas seulement de livrer un outil, mais de vous apporter une
 
 # --- Onglet 6 : Contact ---
 with tabs[5]:
+if selected_section == "contact":
     st.markdown(
     f"""
     <div style="
@@ -537,14 +568,71 @@ with tabs[5]:
     """,
     unsafe_allow_html=True
 )
-    
-st.markdown("""
-   
+
+if selected_section == "mentions-legales":
+    st.markdown(
+    """
+    <div style="
+        width: 100%;
+        min-height: 92vh;
+        font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(180deg, rgba(226,232,240,0.92) 0%, rgba(248,250,252,0.98) 100%);
+        position: relative;
+    ">
+        <div style="
+            width: min(1100px, 96vw);
+            margin: 0 auto;
+            background-color: rgba(248,250,252,0.94);
+            padding: 2.5rem;
+            box-sizing: border-box;
+            color: #0F172A;
+            border-radius: 1.25rem;
+            box-shadow: 0 20px 45px rgba(15,23,42,0.12);
+        ">
+            <h1 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Mentions légales</h1>
+            <p style="font-size:18px; line-height:1.7;">Les informations ci-dessous identifient l'éditeur du site BenIA.solutions et l'activité déclarée de l'auto-entreprise.</p>
+            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Identité</h2>
+            <ul style="font-size:18px; line-height:1.7;">
+                <li><strong>Nom d'usage :</strong> GOFFINET</li>
+                <li><strong>Prénom :</strong> Benoît Thomas</li>
+                <li><strong>SIREN :</strong> 833722465</li>
+                <li><strong>SIRET :</strong> 83372246500030</li>
+                <li><strong>Compte auto-entrepreneur :</strong> 917000001265698595 (Commerçant)</li>
+            </ul>
+            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Statut de l'activité</h2>
+            <ul style="font-size:18px; line-height:1.7;">
+                <li><strong>État du compte :</strong> Actif depuis le 01/03/2026</li>
+                <li><strong>Code NAF :</strong> 6311Z — Traitement de données, hébergement et activités connexes</li>
+                <li><strong>Date d'immatriculation :</strong> 01/03/2026</li>
+                <li><strong>Périodicité du compte :</strong> Mensuel au 30</li>
+                <li><strong>Prélèvement libératoire de l'impôt sur le revenu :</strong> Oui</li>
+                <li><strong>Exonération :</strong> Non</li>
+            </ul>
+            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Coordonnées professionnelles</h2>
+            <p style="font-size:18px; line-height:1.7;">
+                <strong>Adresse professionnelle :</strong><br>
+                238 RUE ABEL GANCE<br>
+                34070 MONTPELLIER
+            </p>
+            <p style="font-size:18px; line-height:1.7;">
+                <strong>Adresse de correspondance :</strong><br>
+                238 RUE ABEL GANCE<br>
+                34070 MONTPELLIER
+            </p>
+            <p style="font-size:18px; line-height:1.7;">Pour toute demande relative au site, vous pouvez utiliser l'onglet Contact.</p>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(f"""
 <footer class="site-footer">
     <p>
-        © 2026 Goffinet — 
-        <a href="/mentions-legales">Mentions légales</a> | 
-        <a href="/Contact">Contact</a>
+       © {CURRENT_YEAR} Goffinet — 
+        <a href="?section=mentions-legales&view=mentions-legales">Mentions légales</a> | 
+        <a href="?section=contact">Contact</a>
     </p>
 </footer>
 """, unsafe_allow_html=True)
