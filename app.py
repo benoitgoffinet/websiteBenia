@@ -666,7 +666,7 @@ if selected_section == "mentions-legales":
                 <li><strong>Prénom :</strong> Benoît Thomas</li>
                 <li><strong>SIREN :</strong> 833722465</li>
                 <li><strong>SIRET :</strong> 83372246500030</li>
-                <li><strong>Compte auto-entrepreneur :</strong> 917000001265698595 (Commerçant)</li>
+                <li><strong>Compte auto-entrepreneur :</strong> 917000001265698595</li>
             </ul>
             <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Statut de l'activité</h2>
             <ul style="font-size:18px; line-height:1.7;">
