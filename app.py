@@ -290,7 +290,7 @@ Sur plusieurs représentations, cela peut représenter un gain significatif sur 
             <li><strong>✔ Une meilleure compréhension de l’impact des décisions d’organisation</strong><br>
             L’analyse des données permet d’identifier les choix qui favorisent la fréquentation et d’ajuster progressivement l’organisation et la programmation des spectacles.</li>
             </ul>
-            <h2 style="color:#B8C1CC; font-family: 'Times New Roman', Times, serif;">Avant l’analyse des données</h2>
+            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Avant l’analyse des données</h2>
             <p style="font-size:18px; line-height:1.6;">Les informations utiles à la prise de décision sont souvent <strong>dispersées, peu accessibles ou difficiles à exploiter.</strong><br>
             Les décisions d’organisation et de programmation reposent alors principalement <strong>sur l’expérience ou l’intuition.</strong>
             </p>
