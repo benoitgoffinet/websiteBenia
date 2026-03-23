@@ -539,22 +539,11 @@ with tabs[5]:
 )
     
 st.markdown("""
-    arer visuellement les éléments
-
-Ton footer est un peu “collé”, on peut améliorer la lisibilité.
-
-3. 👉 Optionnel : ne pas trop charger
-
-Email + téléphone dans le footer = OK
-mais parfois on préfère garder ça sur la page contact
-
-✅ Version améliorée (recommandée)
+   
 <footer class="site-footer">
     <p>
         © 2026 Goffinet — 
         <a href="/mentions-legales">Mentions légales</a> | 
-        benoit@benia.solutions | 
-        07 67 65 92 51
     </p>
 </footer>
 """, unsafe_allow_html=True)
