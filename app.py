@@ -544,6 +544,7 @@ st.markdown("""
     <p>
         © 2026 Goffinet — 
         <a href="/mentions-legales">Mentions légales</a> | 
+        <a href="/Contact">Contact</a>
     </p>
 </footer>
 """, unsafe_allow_html=True)
