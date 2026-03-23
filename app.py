@@ -280,10 +280,15 @@ if show_legal_notice:
     section_options.append(("Mentions légales", "mentions-legales"))
     if default_section == "presentation":
         default_section = "mentions-legales"
-
+        
+section_map = dict(section_options)
 section_labels = [label for label, _ in section_options]
 section_keys = [key for _, key in section_options]
-selected_index = section_keys.index(default_section) if default_section in section_keys else 0
+
+if "selected_section" not in st.session_state or st.session_state.selected_section not in section_keys:
+    st.session_state.selected_section = default_section if default_section in section_keys else section_keys[0]
+
+selected_index = section_keys.index(st.session_state.selected_section)
 
 st.markdown('<div class="main-nav-shell">', unsafe_allow_html=True)
 selected_label = st.radio(
@@ -294,13 +299,18 @@ selected_label = st.radio(
     label_visibility="collapsed",
 )
 st.markdown('</div>', unsafe_allow_html=True)
-selected_section = dict(section_options)[selected_label]
-query_params["section"] = selected_section
-if selected_section == "mentions-legales":
+selected_section = section_map[selected_label]
+if selected_section != st.session_state.selected_section:
+    st.session_state.selected_section = selected_section
+
+query_params["section"] = st.session_state.selected_section
+if st.session_state.selected_section == "mentions-legales":
+
     query_params["view"] = "mentions-legales"
 else:
     query_params.pop("view", None)
-    
+
+selected_section = st.session_state.selected_section
 # --- Onglet 1 : Présentation ---
 if selected_section == "presentation":   
    
@@ -662,18 +672,9 @@ if selected_section == "mentions-legales":
                 <li><strong>État du compte :</strong> Actif depuis le 01/03/2026</li>
                 <li><strong>Code NAF :</strong> 6311Z — Traitement de données, hébergement et activités connexes</li>
                 <li><strong>Date d'immatriculation :</strong> 01/03/2026</li>
-                <li><strong>Périodicité du compte :</strong> Mensuel au 30</li>
-                <li><strong>Prélèvement libératoire de l'impôt sur le revenu :</strong> Oui</li>
-                <li><strong>Exonération :</strong> Non</li>
             </ul>
-            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Coordonnées professionnelles</h2>
             <p style="font-size:18px; line-height:1.7;">
                 <strong>Adresse professionnelle :</strong><br>
-                238 RUE ABEL GANCE<br>
-                34070 MONTPELLIER
-            </p>
-            <p style="font-size:18px; line-height:1.7;">
-                <strong>Adresse de correspondance :</strong><br>
                 238 RUE ABEL GANCE<br>
                 34070 MONTPELLIER
             </p>
@@ -686,10 +687,23 @@ if selected_section == "mentions-legales":
 
 st.markdown(f"""
 <footer class="site-footer">
-    <p>
-       © {CURRENT_YEAR} Goffinet — 
-        <a href="?section=mentions-legales&view=mentions-legales">Mentions légales</a> | 
-        <a href="?section=contact">Contact</a>
-    </p>
+ <h2>BenIA.solutions</h2>
+    <p>© {CURRENT_YEAR} Goffinet</p>
+    <p>Navigation rapide sans quitter la page.</p>   
 </footer>
 """, unsafe_allow_html=True)
+
+footer_col1, footer_col2, footer_col3 = st.columns([1.2, 1, 6])
+with footer_col1:
+    if st.button("Mentions légales", key="footer_legal", use_container_width=True):
+        st.session_state.selected_section = "mentions-legales"
+        query_params["section"] = "mentions-legales"
+        query_params["view"] = "mentions-legales"
+        st.rerun()
+with footer_col2:
+    if st.button("Contact", key="footer_contact", use_container_width=True):
+        st.session_state.selected_section = "contact"
+        query_params["section"] = "contact"
+        query_params.pop("view", None)
+        st.rerun()
+
