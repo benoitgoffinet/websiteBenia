@@ -92,6 +92,31 @@ header {
             font-size: clamp(1rem, 1.2vw, 1.15rem);
             font-weight: 700;
         }
+        .site-footer {
+            width: min(1500px, 96vw);
+            margin: 0 auto;
+            padding: 1.5rem clamp(1rem, 3vw, 2.5rem) 2rem;
+            background-color: #111827;
+            color: #F9FAFB;
+            border-top: 4px solid #FACC15;
+            border-radius: 0 0 1.25rem 1.25rem;
+        }
+
+        .site-footer h2 {
+            margin: 0 0 0.75rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: clamp(1.4rem, 2.5vw, 2rem);
+        }
+
+        .site-footer p {
+            margin: 0.35rem 0;
+            font-size: clamp(1rem, 1.4vw, 1.1rem);
+        }
+
+        .site-footer a {
+            color: #FACC15 !important;
+            text-decoration: none;
+        }
     </style>
     """,
     unsafe_allow_html=True
@@ -498,4 +523,11 @@ with tabs[5]:
     unsafe_allow_html=True
 )
     
-    
+st.markdown("""
+    <footer class="site-footer">
+        <h2>Informations essentielles</h2>
+        <p><strong>Nom :</strong> Benoît Goffinet</p>
+        <p><strong>Email :</strong> <a href="mailto:benoit@benia.solutions">benoit@benia.solutions</a></p>
+        <p><strong>Téléphone :</strong> <a href="tel:+33767659251">07 67 65 92 51</a></p>
+    </footer>
+""", unsafe_allow_html=True)    
