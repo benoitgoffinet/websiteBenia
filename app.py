@@ -377,6 +377,7 @@ Il devient alors difficile d’<strong>anticiper l’affluence</strong> des spec
             <p style="font-size:18px; line-height:1.6;">Pour répondre à cette problématique, BenIA.solutions propose d’exploiter et d’analyser vos données historiques de fréquentation afin d’identifier les tendances observées au fil du temps.<br>
 BenIA.solutions développe ensuite un dashboard interactif permettant d’analyser les données de fréquentation, d’anticiper l’affluence des spectacles et d’accompagner l’organisation des représentations.
 </p>
+             <a href="?section=dashboard" class="cta-link">Voir le Dashboard</a>
             <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Bénéfices</h2>
             <ul style="font-size:18px; line-height:1.6;">
             <li><strong>✔ Anticipation de la fréquentation</strong> <br>
@@ -403,6 +404,7 @@ Sur plusieurs représentations, cela peut représenter un gain significatif sur 
              <p style="font-size:18px; line-height:1.6;">BenIA.solutions met à disposition un <strong>dashboard interactif</strong> permettant de centraliser et d’exploiter les données de fréquentation.<br>
             Les équipes disposent alors d’indicateurs clairs pour <strong>anticiper la fréquentation, identifier les tendances et orienter plus facilement les décisions d’organisation et de programmation.</strong>
             </p>
+            <a href="?section=contact" class="cta-link">Prendre rendez vous</a>
             </div>
     </div>
     """,
@@ -526,6 +528,7 @@ Au-delà des compétences techniques, mon travail repose également sur plusieur
 Le secteur culturel produit aujourd’hui de nombreuses données (billetterie, fréquentation, programmation), mais ces informations sont rarement exploitées de manière approfondie.<br>
 BenIA.solutions vise à valoriser ces données et à les rendre utiles pour le pilotage des activités culturelles.
 </p>
+           <a href="?section=solution" class="cta-link">Voir l'offre</a>
            <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Traitement des données</h2>
             <p style="font-size:18px; line-height:1.6;">
 Les données utilisées dans le cadre des analyses restent la propriété de la structure culturelle.<br>
@@ -536,8 +539,7 @@ Lorsque cela est nécessaire, les données peuvent être anonymisées ou agrég�
             <h2 style="color:#0F172A; font-family: 'Times New Roman', Times, serif;">Discutons de votre projet </h2>
             <p style="font-size:18px; line-height:1.6;">Vous souhaitez explorer vos <strong>données de fréquentation</strong> et mieux <strong>anticiper l’affluence</strong> de vos spectacles ?
 N’hésitez pas à me contacter pour échanger sur votre projet.</p>
-            <p style="font-size:18px; line-height:1.6;">Email : benoit@benia.solutions</p>
-            <p style="font-size:18px; line-height:1.6;">Téléphone : 07 67 65 92 51</p>
+            <a href="?section=contact" class="cta-link">Prendre contact</a>
             </div>
     </div>
     """,
@@ -594,7 +596,9 @@ Mes prestations débutent à partir de 2500 €, en fonction de votre projet.</p
             <p style="font-size:18px; line-height:1.6;">
 Je ne me contente pas de créer des dashboards : je vous aide à comprendre vos données, anticiper les tendances et prendre de meilleures décisions.<br>
 L’objectif n’est pas seulement de livrer un outil, mais de vous apporter une vraie valeur business durable.<br>
+ <a href="?section=dashboard" class="cta-link">Voir le dashboard</a><br>
 👉 Le plus simple est d’échanger rapidement pour vous donner une estimation précise selon votre besoin./<p>
+<a href="?section=contact" class="cta-link">Prendre contact</a>
             </div>
     </div>
     """,
