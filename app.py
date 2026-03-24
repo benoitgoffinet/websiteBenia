@@ -597,6 +597,7 @@ Mes prestations débutent à partir de 2500 €, en fonction de votre projet.</p
 Je ne me contente pas de créer des dashboards : je vous aide à comprendre vos données, anticiper les tendances et prendre de meilleures décisions.<br>
 L’objectif n’est pas seulement de livrer un outil, mais de vous apporter une vraie valeur business durable.<br>
  <a href="?section=dashboard" class="cta-link">Voir le dashboard</a><br>
+ <br>
 👉 Le plus simple est d’échanger rapidement pour vous donner une estimation précise selon votre besoin./<p>
 <a href="?section=contact" class="cta-link">Prendre contact</a>
             </div>
