@@ -264,8 +264,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 query_params = st.query_params
-show_legal_notice = query_params.get("view") == "mentions-legales"
-default_section = query_params.get("section", "presentation")
+requested_section = query_params.get("section", "presentation")
+show_legal_notice = requested_section == "mentions-legales"
 
 section_options = [
     ("Présentation", "presentation"),
@@ -276,40 +276,42 @@ section_options = [
     ("Contact", "contact"),
 ]
 
-if show_legal_notice:
-    section_options.append(("Mentions légales", "mentions-legales"))
-    if default_section == "presentation":
-        default_section = "mentions-legales"
+
         
 label_by_key = {key: label for label, key in section_options}
 section_keys = [key for _, key in section_options]
 
 def sync_navigation_query_params():
     st.query_params["section"] = st.session_state.selected_section
-    if st.session_state.selected_section == "mentions-legales":
-        st.query_params["view"] = "mentions-legales"
-    else:
-        st.query_params.pop("view", None)
+    
 
-if "selected_section" not in st.session_state or st.session_state.selected_section not in section_keys:
-    st.session_state.selected_section = default_section if default_section in section_keys else section_keys[0]
+if show_legal_notice:
+    selected_section = "mentions-legales"
+    st.query_params["section"] = "mentions-legales"
+else:
+    default_section = requested_section if requested_section in section_keys else "presentation"
+
+    if "selected_section" not in st.session_state or st.session_state.selected_section not in section_keys:
+        st.session_state.selected_section = default_section
+        sync_navigation_query_params()
+
+    selected_index = section_keys.index(st.session_state.selected_section)
+
+    st.markdown('<div class="main-nav-shell">', unsafe_allow_html=True)
+    selected_section = st.radio(
+        "Navigation",
+        section_keys,
+        index=selected_index,
+        format_func=lambda key: label_by_key[key],
+        horizontal=True,
+        label_visibility="collapsed",
+        key="selected_section",
+        on_change=sync_navigation_query_params,
+    )
+    st.markdown('</div>', unsafe_allow_html=True)
     sync_navigation_query_params()
     
-selected_index = section_keys.index(st.session_state.selected_section)
 
-st.markdown('<div class="main-nav-shell">', unsafe_allow_html=True)
-selected_section = st.radio(
-    "Navigation",
-    section_keys,
-    index=selected_index,
-    format_func=lambda key: label_by_key[key],
-    horizontal=True,
-    label_visibility="collapsed",
-    key="selected_section",
-    on_change=sync_navigation_query_params,
-)
-st.markdown('</div>', unsafe_allow_html=True)
-sync_navigation_query_params()
 
 
 # --- Onglet 1 : Présentation ---
@@ -598,7 +600,7 @@ Je ne me contente pas de créer des dashboards : je vous aide à comprendre vos 
 L’objectif n’est pas seulement de livrer un outil, mais de vous apporter une vraie valeur business durable.<br>
  <a href="?section=dashboard" class="cta-link">Voir le dashboard</a><br>
  <br>
-👉 Le plus simple est d’échanger rapidement pour vous donner une estimation précise selon votre besoin./<p>
+👉 Le plus simple est d’échanger rapidement pour vous donner une estimation précise selon votre besoin.</p>
 <a href="?section=contact" class="cta-link">Prendre contact</a>
             </div>
     </div>
@@ -685,6 +687,7 @@ if selected_section == "mentions-legales":
                 34070 MONTPELLIER
             </p>
             <p style="font-size:18px; line-height:1.7;">Pour toute demande relative au site, vous pouvez utiliser l'onglet Contact.</p>
+            <a href="?section=contact" class="cta-link">Contact</a>
         </div>
     </div>
     """,
@@ -695,7 +698,7 @@ st.markdown(f"""
 <footer class="site-footer">
      <p>
        © {CURRENT_YEAR} Goffinet — 
-        <a href="?section=mentions-legales&view=mentions-legales">Mentions légales</a> | 
+        <a href="?section=mentions-legales">Mentions légales</a> | 
         <a href="?section=contact">Contact</a>
     </p>
 </footer>
