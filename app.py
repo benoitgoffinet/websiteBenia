@@ -304,11 +304,11 @@ st.markdown("""
             width: min(92vw, 360px);
         }
 
-        .main-nav-shell.mobile-nav-open div[role="radiogroup"] {
+        div[role="radiogroup"].mobile-nav-open {
             display: grid !important;
         }
 
-        .main-nav-shell.mobile-nav-open div[role="radiogroup"] label[data-baseweb="radio"] {
+        div[role="radiogroup"].mobile-nav-open label[data-baseweb="radio"] {
             max-width: 360px;
             margin-inline: auto !important;
         }
@@ -385,24 +385,25 @@ else:
             (() => {
                 const navShell = window.parent.document.getElementById("main-nav-shell");
                 const toggleButton = window.parent.document.getElementById("mobile-menu-toggle");
-                if (!navShell || !toggleButton || toggleButton.dataset.bound === "true") return;
+                const radioGroup = window.parent.document.querySelector('div[role="radiogroup"]');
+                if (!navShell || !toggleButton || !radioGroup || toggleButton.dataset.bound === "true") return;
 
                 toggleButton.dataset.bound = "true";
 
                 const updateExpandedState = () => {
-                    const isOpen = navShell.classList.contains("mobile-nav-open");
+                    const isOpen = radioGroup.classList.contains("mobile-nav-open");
                     toggleButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
                 };
 
                 toggleButton.addEventListener("click", () => {
-                    navShell.classList.toggle("mobile-nav-open");
+                    radioGroup.classList.toggle("mobile-nav-open");
                     updateExpandedState();
                 });
 
                 const closeMenuAfterSelection = (event) => {
                     const radioLabel = event.target.closest('label[data-baseweb="radio"]');
                     if (!radioLabel || window.parent.innerWidth > 640) return;
-                    navShell.classList.remove("mobile-nav-open");
+                    radioGroup.classList.remove("mobile-nav-open");
                     updateExpandedState();
                 };
 
@@ -410,7 +411,7 @@ else:
 
                 window.parent.addEventListener("resize", () => {
                     if (window.parent.innerWidth > 640) {
-                        navShell.classList.remove("mobile-nav-open");
+                        radioGroup.addEventListener("click", closeMenuAfterSelection);
                         updateExpandedState();
                     }
                 });
