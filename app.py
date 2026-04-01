@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import base64
 from pathlib import Path
 from datetime import datetime
@@ -379,48 +380,51 @@ else:
         on_change=sync_navigation_query_params,
     )
     st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown(
+    components.html(
         """
         <script>
             (() => {
-                const navShell = window.parent.document.getElementById("main-nav-shell");
-                const toggleButton = window.parent.document.getElementById("mobile-menu-toggle");
-                const radioGroup = window.parent.document.querySelector('div[role="radiogroup"]');
-                if (!navShell || !toggleButton || !radioGroup || toggleButton.dataset.bound === "true") return;
+                const bindMenu = () => {
+                    const parentDoc = window.parent.document;
+                    const navShell = parentDoc.getElementById("main-nav-shell");
+                    const toggleButton = parentDoc.getElementById("mobile-menu-toggle");
+                    const radioGroup = parentDoc.querySelector('div[role="radiogroup"]');
+                    if (!navShell || !toggleButton || !radioGroup) return false;
+                    if (toggleButton.dataset.bound === "true") return true;
+                    toggleButton.dataset.bound = "true";
+                    const updateExpandedState = () => {
+                        const isOpen = radioGroup.classList.contains("mobile-nav-open");
+                        toggleButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+                    };
 
-                toggleButton.dataset.bound = "true";
-
-                const updateExpandedState = () => {
-                    const isOpen = radioGroup.classList.contains("mobile-nav-open");
-                    toggleButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
-                };
-
-                toggleButton.addEventListener("click", () => {
-                    radioGroup.classList.toggle("mobile-nav-open");
-                    updateExpandedState();
-                });
-
-                const closeMenuAfterSelection = (event) => {
-                    const radioLabel = event.target.closest('label[data-baseweb="radio"]');
-                    if (!radioLabel || window.parent.innerWidth > 640) return;
-                    radioGroup.classList.remove("mobile-nav-open");
-                    updateExpandedState();
-                };
-
-                navShell.addEventListener("click", closeMenuAfterSelection);
-
-                window.parent.addEventListener("resize", () => {
-                    if (window.parent.innerWidth > 640) {
-                        radioGroup.addEventListener("click", closeMenuAfterSelection);
+                    toggleButton.addEventListener("click", () => {
+                        radioGroup.classList.toggle("mobile-nav-open");
                         updateExpandedState();
-                    }
-                });
+                    });
 
-                updateExpandedState();
+                    navShell.addEventListener("click", (event) => {
+                        const radioLabel = event.target.closest('label[data-baseweb="radio"]');
+                        if (!radioLabel || window.parent.innerWidth > 640) return;
+                        radioGroup.classList.remove("mobile-nav-open");
+                        updateExpandedState();
+                    });
+                    updateExpandedState();
+                    return true;
+                };
+                if (bindMenu()) return;
+                let attempts = 0;
+                const timer = setInterval(() => {
+                    attempts += 1;
+                    if (bindMenu() || attempts >= 40) {
+                        clearInterval(timer);
+                
+                    }
+                }, 100);
             })();
         </script>
         """,
-        unsafe_allow_html=True,
+        height=0,
+        width=0,
     )
     sync_navigation_query_params()
     
