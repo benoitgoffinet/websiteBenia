@@ -223,6 +223,11 @@ st.markdown("""
         color: #0F172A !important;
         line-height: 1.25 !important;
     }
+
+    .mobile-menu-toggle {
+        display: none;
+    }
+    
     @media (max-width: 1100px) {
         div[role="radiogroup"] {
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -248,9 +253,63 @@ st.markdown("""
         }
     }
     @media (max-width: 640px) {
+         .main-nav-shell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .mobile-menu-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            border: 1px solid rgba(15,23,42,0.14);
+            background: rgba(248,250,252,0.95);
+            box-shadow: 0 8px 18px rgba(15,23,42,0.12);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            padding: 0;
+        }
+
+        .mobile-menu-toggle:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(15,23,42,0.18);
+        }
+
+        .mobile-menu-toggle:focus-visible {
+            outline: 2px solid #B45309;
+            outline-offset: 2px;
+        }
+
+        .mobile-menu-dots {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .mobile-menu-dots span {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background-color: #0F172A;
+            display: inline-block;
+        }
         div[role="radiogroup"] {
             grid-template-columns: 1fr;
-    
+            width: min(92vw, 360px);
+        }
+
+        .main-nav-shell.mobile-nav-open div[role="radiogroup"] {
+            display: grid !important;
+        }
+
+        .main-nav-shell.mobile-nav-open div[role="radiogroup"] label[data-baseweb="radio"] {
+            max-width: 360px;
+            margin-inline: auto !important;
         }
     }
     
@@ -296,8 +355,18 @@ else:
         sync_navigation_query_params()
 
     selected_index = section_keys.index(st.session_state.selected_section)
-
-    st.markdown('<div class="main-nav-shell">', unsafe_allow_html=True)
+    st.markdown(
+        """
+        <div class="main-nav-shell" id="main-nav-shell">
+            <button type="button" class="mobile-menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-label="Ouvrir le menu de navigation">
+                <span class="mobile-menu-dots" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+        """,
+        unsafe_allow_html=True,
+    )
+    
     selected_section = st.radio(
         "Navigation",
         section_keys,
@@ -309,6 +378,39 @@ else:
         on_change=sync_navigation_query_params,
     )
     st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown(
+        """
+        <script>
+            (() => {
+                const navShell = window.parent.document.getElementById("main-nav-shell");
+                const toggleButton = window.parent.document.getElementById("mobile-menu-toggle");
+                if (!navShell || !toggleButton || toggleButton.dataset.bound === "true") return;
+
+                toggleButton.dataset.bound = "true";
+
+                const updateExpandedState = () => {
+                    const isOpen = navShell.classList.contains("mobile-nav-open");
+                    toggleButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+                };
+
+                toggleButton.addEventListener("click", () => {
+                    navShell.classList.toggle("mobile-nav-open");
+                    updateExpandedState();
+                });
+
+                window.parent.addEventListener("resize", () => {
+                    if (window.parent.innerWidth > 640) {
+                        navShell.classList.remove("mobile-nav-open");
+                        updateExpandedState();
+                    }
+                });
+
+                updateExpandedState();
+            })();
+        </script>
+        """,
+        unsafe_allow_html=True,
+    )
     sync_navigation_query_params()
     
 
