@@ -299,6 +299,7 @@ st.markdown("""
             display: inline-block;
         }
         div[role="radiogroup"] {
+            display: none !important;
             grid-template-columns: 1fr;
             width: min(92vw, 360px);
         }
@@ -397,6 +398,15 @@ else:
                     navShell.classList.toggle("mobile-nav-open");
                     updateExpandedState();
                 });
+
+                const closeMenuAfterSelection = (event) => {
+                    const radioLabel = event.target.closest('label[data-baseweb="radio"]');
+                    if (!radioLabel || window.parent.innerWidth > 640) return;
+                    navShell.classList.remove("mobile-nav-open");
+                    updateExpandedState();
+                };
+
+                navShell.addEventListener("click", closeMenuAfterSelection);
 
                 window.parent.addEventListener("resize", () => {
                     if (window.parent.innerWidth > 640) {
